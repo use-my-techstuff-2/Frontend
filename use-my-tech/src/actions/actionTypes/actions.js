@@ -1,13 +1,13 @@
 const login = (user) => {};
 const loginFailed = () => {};
 const loginSuccess = () => {};
-const submitRegiste = () => {};
-const registerSucce = () => {};
+const submitRegister = () => {};
+const registerSuccess = () => {};
 const registerFailed = () => {};
 const profileUpdate = () => {};
 const editPost = () => {};
 const deletePost = () => {};
-const viewOwnPosts = () => {};
+const viewOwnPosts = (state, action) => {};
 const viewAllPosts = () => {};
 const viewPost = () => {};
 const rentPostedItem = () => {};
