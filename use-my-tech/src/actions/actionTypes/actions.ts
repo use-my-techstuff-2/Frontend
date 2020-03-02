@@ -1,4 +1,4 @@
-const login = () => {};
+const login = (user) => {};
 const loginFailed = () => {};
 const loginSuccess = () => {};
 const submitRegiste = () => {};

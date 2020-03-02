@@ -9,7 +9,7 @@ const initialState = {
 
 const handlers = {};
 
-//Handlers that are called by the reducer that update state
+// Handlers that are called by the reducer that update state
 
 handlers[actions.SET_USER] = utils.updateValueInState("token");
 handlers[actions.LOGIN_SUCCEED] = utils.flipBoolValueInState("loggedIn");
@@ -27,3 +27,4 @@ const rootReducer = (initialState = {}, handlers) => {
 };
 
 export default rootReducer(initialState, handlers);
+console.log(rootReducer(null));

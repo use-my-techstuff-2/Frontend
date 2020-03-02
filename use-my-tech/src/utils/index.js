@@ -1,5 +1,5 @@
 import updateValueInState from "./updateValueInState";
-import axiosWithAuth from "./axiosWithAuth";
+// import axiosWithAuth from "./axiosWithAuth";
 import flipBoolValueInState from "./flipBoolValueInState";
 
-export { updateValueInState, axiosWithAuth, flipBoolValueInState };
+export { updateValueInState, flipBoolValueInState };

@@ -1,5 +1,11 @@
 import React from "react";
+import { createStore } from "redux";
 import "./App.css";
+import { Provider } from "react-redux";
+
+import reducer from "./reducers/rootreducer";
+
+const store = createStore(reducer);
 
 function App() {
   return (
