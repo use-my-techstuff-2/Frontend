@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 
 export default function Login(props) {
-    const { handleSubmit, login, errors } = useForm();
+    const { handleSubmit, errors } = useForm();
     const onSubmit = data => {
       console.log(data);
     };
@@ -14,29 +14,18 @@ export default function Login(props) {
   
         <label>Username: </label>
         <input
+          type="text"
           name="username"
-          ref={login({
-            validate: value => value !== "admin" || "Nice try!"
-          })}
+          required
         />
         {errors.username && errors.username.message}
 
         <label>Password: </label>
         <input
           name="password"
-          ref={login({
-            required: 'Required',
-            minLength: 6,
-            pattern: {
-              value: /^[A-Z0-9._%+-]/i,
-              message: "invalid password"
-            }
-          })}
+          required
         />
         {errors.password && errors.password.message}
-        {errors.password && errors.password.type === "minLength" && (
-            <p>This is field required min length of 6</p>
-        )}
   
         <button type="submit">Login</button>
       </form>
