@@ -75,14 +75,16 @@ export default function Register(props) {
             placeholder='Enter email'
           />
           {errors.email && errors.email.message}
+        </FormGroup>
     
-          <label>Username: </label>
-          <input
+        <FormGroup controlId='formBasicUserName'>
+          <FormLabel>Username: </FormLabel>
+          <FormControl
             name='username'
             ref={register({
               validate: value => value !== 'admin' || 'Nice try!'
             })}
-            type='text'
+            type='username'
             placeholder='Enter username'
           />
           {errors.username && errors.username.message}
