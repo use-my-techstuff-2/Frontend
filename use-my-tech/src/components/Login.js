@@ -1,5 +1,7 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
+import {FormGroup, FormControl, FormLabel} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Login(props) {
     const { handleSubmit, errors } = useForm();
@@ -8,24 +10,32 @@ export default function Login(props) {
     };
   
     return (
-      <form className="App" onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
 
-        <h1>Log in</h1>
-  
-        <label>Username: </label>
-        <input
-          type="text"
-          name="username"
-          required
-        />
-        {errors.username && errors.username.message}
+        <h1>Welcome</h1>
+        <h3>Hello, Welcome back please log in.</h3>
+        <h3>New user Register <Link to='/Register'>Here</Link></h3>
 
-        <label>Password: </label>
-        <input
-          name="password"
-          required
-        />
-        {errors.password && errors.password.message}
+        <FormGroup controlId='formBasicUsername'>
+          <FormLabel>Username: </FormLabel>
+          <FormControl
+            type='text'
+            name='username'
+            required
+            placeholder='Enter username'
+          />
+          {errors.username && errors.username.message}
+        </FormGroup>
+
+        <FormGroup controlId='formBasicPassword'>
+          <FormLabel>Password: </FormLabel>
+          <FormControl
+            name="password"
+            required
+            placeholder='Enter password'
+          />
+          {errors.password && errors.password.message}
+        </FormGroup>
   
         <button type="submit">Login</button>
       </form>
