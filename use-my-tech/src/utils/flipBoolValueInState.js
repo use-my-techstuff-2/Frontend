@@ -14,4 +14,4 @@ const flipBoolValueInState = (stateKey) => {
 export default flipBoolValueInState;
 const flipTest = flipBoolValueInState("key");
 
-console.log(flipTest({ user: "Robert", key: false }));
+// console.log(flipTest({ user: "Robert", key: false }));
