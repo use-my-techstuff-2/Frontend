@@ -1,13 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import {FormGroup, FormControl, FormLabel} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
 const Div = styled.div`
   text-align: center;
-  padding: 13% 13% 50% 13%;
+  padding: 13% 13% 80% 13%;
   background: #292C2D;
 `;
 
@@ -30,34 +30,28 @@ const Section = styled.section`
 `;
 
 export default function Login() {
-  const { errors } = useForm();
+  const { handleSubmit, errors } = useForm();
+  
+  const history = useHistory();
 
-  function handleSubmit(event) {
-
-    const {username, password} = this.state;
+  function submitHandler(values) {
   
   axios
-      .post('https://usemytechstuff-bw.herokuapp.com/api/auth/login', 
-        {
-          username: username,
-          password: password
-        }
-      )
-      .then(res => {
-        this.props.history.push('/')
-        console.log('this is register res',res)
-      })
-      .catch(error => {
-        console.log('error', error);
-      })
-    event.preventDefault();
+    .post('https://usemytechstuff-bw.herokuapp.com/api/auth/login', values)
+    .then(res => {
+      console.log('this is login res',res)
+      history.push('/')
+    })
+    .catch(error => {
+      console.log('error', error);
+    })
   }
 
   function render() {
     return (
       <Div>
         <Section>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(submitHandler)}>
 
             <Div1>
             <h1>Welcome</h1>

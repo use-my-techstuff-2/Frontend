@@ -1,13 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import {FormGroup, FormControl, FormLabel} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
 const Div = styled.div`
   text-align: center;
-  padding: 13% 13% 50% 13%;
+  padding: 13% 13% 80% 13%;
   background: #292C2D;
 `;
 
@@ -30,34 +30,28 @@ const Section = styled.section`
 `;
 
 export default function Register() {
-  const { register, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
+  
+  const history = useHistory();
 
-  function handleSubmit(event) {
-
-    const {username, password} = this.state;
-
+  function submitHandler(values) {
+    console.log(values)
     axios
-      .post('https://usemytechstuff-bw.herokuapp.com/api/auth/register', 
-        {
-          username: username,
-          password: password
-        }
-      )
+      .post('https://usemytechstuff-bw.herokuapp.com/api/auth/register', values)
       .then(res => {
-        this.props.history.push('/login')
         console.log('this is register res',res)
+        history.push('/')
       })
       .catch(error => {
         console.log('error', error);
       })
-    event.preventDefault();
   }
 
   function render() {
     return (
       <Div>
         <Section>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(submitHandler)}>
 
             <Div1>
               <h1>Welcome</h1>
