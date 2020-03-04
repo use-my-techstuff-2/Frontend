@@ -12,6 +12,7 @@ export const actions = {
   VIEW_OWN_POSTS: "viewOwnPosts",
   VIEW_ALL_POSTS: "viewAllPosts", //may be removed
   VIEW_POST: "viewPost",
+  SEARCH_BY_QUERY: "searchByQuery",
   RENT_POSTED_ITEM: "rentPostedItem",
   //stretch actions
   MESSAGE_POST_OWNER: "messagePoseOwner",
