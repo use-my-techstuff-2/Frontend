@@ -7,15 +7,26 @@ import axios from 'axios';
 
 const Div = styled.div`
   text-align: center;
-  padding: 13%;
+  padding: 13% 13% 50% 13%;
+  background: #292C2D;
 `;
 
 const Div1 = styled.div`
   padding: 0% 0% 2% 0%;
+  color: white;
 `;
 
 const Div2 = styled.div`
   padding: 0% 0% 2% 0%;
+  color: white;
+`;
+
+const Section = styled.section`
+  background: #550C18;
+  border: 3px solid #9C9E9E;
+  padding-bottom: 3%;
+  width: 80%;
+  margin-left: 10%;
 `;
 
 export default function Login() {
@@ -45,41 +56,43 @@ export default function Login() {
   function render() {
     return (
       <Div>
-      <form onSubmit={handleSubmit}>
+        <Section>
+          <form onSubmit={handleSubmit}>
 
-        <Div1>
-        <h1>Welcome</h1>
-        <h3>Hello, Welcome back please log in.</h3>
-        <h3>New user Register <Link to='/Register'>Here</Link></h3>
-        </Div1>
+            <Div1>
+            <h1>Welcome</h1>
+            <h3>Hello, Welcome back please log in.</h3>
+            <h3>New user Register <Link to='/Register'>Here</Link></h3>
+            </Div1>
 
-        <FormGroup controlId='formBasicUsername'>
-          <Div2>
-            <FormLabel>Username: </FormLabel>
-            <FormControl
-              type='text'
-              name='username'
-              required
-              placeholder='Enter username'
-            />
-            {errors.username && errors.username.message}
-          </Div2>
-        </FormGroup>
+            <FormGroup controlId='formBasicUsername'>
+              <Div2>
+                <FormLabel>Username: </FormLabel>
+                <FormControl
+                  type='text'
+                  name='username'
+                  required
+                  placeholder='Enter username'
+                />
+                {errors.username && errors.username.message}
+              </Div2>
+            </FormGroup>
 
-        <FormGroup controlId='formBasicPassword'>
-          <Div2>
-            <FormLabel>Password: </FormLabel>
-            <FormControl
-              name="password"
-              required
-              placeholder='Enter password'
-            />
-            {errors.password && errors.password.message}
-            </Div2>
-        </FormGroup>
-  
-        <button type="submit">Login</button>
-      </form>
+            <FormGroup controlId='formBasicPassword'>
+              <Div2>
+                <FormLabel>Password: </FormLabel>
+                <FormControl
+                  name="password"
+                  required
+                  placeholder='Enter password'
+                />
+                {errors.password && errors.password.message}
+                </Div2>
+            </FormGroup>
+      
+            <button type="submit">Login</button>
+          </form>
+        </Section>
       </Div>
     );
   }
