@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -5,6 +6,7 @@ import SideNav from "./SideNav";
 import SideCard from "./SideCard";
 import SearchBar from "./SearchBar";
 import GadgetDisplay from "./GadgetDisplay";
+
 
 const UserPage = () => {
   useEffect(() => {
