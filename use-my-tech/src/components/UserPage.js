@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-
+import React from "react";
+import SearchBar from "./SearchBar";
+import GadgetDisplay from "./GadgetDisplay";
 import SideNav from "./SideNav";
 import SideCard from "./SideCard";
-import UserPostCard from "./UserPostCard";
+
 
 const UserPage = () => {
   return (
     <div>
-      <UserPostCard />
-      <h1>Hello World</h1>
+      <SideNav />
+      <SideCard />
+      <SearchBar />
+      <GadgetDisplay />
     </div>
   );
 };

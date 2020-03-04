@@ -1,7 +1,14 @@
 import React from "react";
+import ProfileCard from "./ProfileCard";
+import UserPostCard from "./UserPostCard";
 
 const SideCard = () => {
-  return <div></div>;
+  return (
+    <>
+      <ProfileCard />
+      <UserPostCard />
+    </>
+  );
 };
 
 export default SideCard;
