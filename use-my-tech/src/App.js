@@ -7,12 +7,13 @@ import './App.css';
 // import { Provider } from "react-redux";
 
 // import reducer from "./reducers/rootreducer";
-
+import UserPage from "./components/UserPage";
 // const store = createStore(reducer);
 
-function App(props) {
+function App() {
   return (
     <div className='App'>
+      <Route path='/UserPage' component={UserPage} />
       <Route path='/Register' component={Register} />
       <Route exact path='/Login' component={Login} />
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import GadgetPost from "./GadgetPost";
 
 const gadgets = [
   {
@@ -35,19 +36,14 @@ const gadgets = [
   }
 ];
 
-const UserPostCard = () => {
+const GadgetDisplay = () => {
   return (
     <div>
-      <h1>Posts</h1>
       {gadgets.map((gadget) => (
-        <div key={gadget.id} className="yourPost">
-          <h3 className="yourPost__title">{gadget.name}</h3>
-          <p className="yourPost__price">{gadget.price}</p>
-          <p className="yourPost__location">{gadget.location}</p>
-        </div>
+        <GadgetPost gadget={gadget} />
       ))}
     </div>
   );
 };
 
-export default UserPostCard;
+export default GadgetDisplay;
