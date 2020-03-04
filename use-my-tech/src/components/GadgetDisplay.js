@@ -1,5 +1,7 @@
+/** @jsx jsx */
 import React from "react";
 import GadgetPost from "./GadgetPost";
+import { css, jsx } from "@emotion/core";
 
 const gadgets = [
   {
@@ -38,7 +40,15 @@ const gadgets = [
 
 const GadgetDisplay = () => {
   return (
-    <div>
+    <div
+      css={{
+        display: "grid",
+        gridTemplateColumns: "30% 30% 30%",
+        justifyContent: "space-around",
+        gridRowGap: "10%",
+        width: "100%"
+      }}
+    >
       {gadgets.map((gadget) => (
         <GadgetPost gadget={gadget} />
       ))}
