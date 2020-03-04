@@ -9,7 +9,12 @@ const SideCard = () => {
     <div
       className="sideDrawer"
       css={css`
-        display: none;
+        position: absolute;
+        left: 10%;
+        background-color: white;
+        z-index: 10;
+        width: 25%;
+        height: 100vh;
       `}
     >
       <ProfileCard />

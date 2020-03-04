@@ -14,6 +14,7 @@ export const actions = {
   VIEW_POST: "viewPost",
   SEARCH_BY_QUERY: "searchByQuery",
   RENT_POSTED_ITEM: "rentPostedItem",
+  SIDE_NAV_SHOW_TOGGLE: "sideNavShowToggle",
   //stretch actions
   MESSAGE_POST_OWNER: "messagePoseOwner",
   VIEW_ALL_POSTS_BY_USER: "viewAllPostsByUser",

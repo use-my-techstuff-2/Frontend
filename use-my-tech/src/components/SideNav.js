@@ -1,6 +1,9 @@
 /**@jsx jsx*/
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { css, jsx } from "@emotion/core";
+
+import { actions } from "../actions/constants";
 
 const styledNav = css`
   height: 100%;
@@ -20,6 +23,12 @@ const styledNav = css`
 `;
 
 const SideNav = () => {
+  const dispatch = useDispatch();
+
+  const toggleMenu = () => {
+    dispatch({ type: actions.SIDE_NAV_SHOW_TOGGLE });
+  };
+
   return (
     <div
       className="sideNav"
@@ -29,13 +38,13 @@ const SideNav = () => {
     >
       <ul>
         <li>
-          <button>Your Posts</button>
+          <button onClick={toggleMenu}>Your Posts</button>
         </li>
         <li>
-          <button>Watched Posts</button>
+          <button onClick={toggleMenu}>Watched Posts</button>
         </li>
         <li>
-          <button>Messages </button>
+          <button onClick={toggleMenu}>Messages </button>
         </li>
       </ul>
     </div>

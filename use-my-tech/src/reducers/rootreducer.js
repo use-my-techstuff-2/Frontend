@@ -2,11 +2,14 @@ import { actions } from "../actions/constants/";
 import * as utils from "../utils";
 
 const initialState = {
+  loading: false,
   token: "",
-  user: { name: "Robert", posts: 4, postsWithOffers: 1 },
+  user: { id: null, name: "Robert", posts: 4, postsWithOffers: 1 },
   loggedIn: false,
   error: "",
-  query: ""
+  query: "",
+  editing: false,
+  sideNavShow: false
 };
 
 // const rootReducer = (state = { initialState }, action) => {
@@ -22,6 +25,9 @@ const handlers = {};
 handlers[actions.SET_USER] = utils.updateValueInState("token");
 handlers[actions.SEARCH_BY_QUERY] = utils.updateValueInState("query");
 handlers[actions.LOGIN_SUCCEED] = utils.flipBoolValueInState("loggedIn");
+handlers[actions.SIDE_NAV_SHOW_TOGGLE] = utils.flipBoolValueInState(
+  "sideNavShow"
+);
 handlers[actions.LOGIN_FAILED] = utils.updateValueInState("error");
 
 const rootReducer = (startState, handlers) => {
