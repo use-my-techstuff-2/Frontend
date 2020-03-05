@@ -46,12 +46,11 @@ export default function Register() {
       .then(res => {
         setCredentials(res.data.user)
         console.log('this is register res',res)
-        history.push('/')
+        history.push('/Login')
       })
       .catch(error => {
         console.log('error', error);
       })
-    event.preventDefault();
   }
 
   function render() {
@@ -63,7 +62,7 @@ export default function Register() {
             <Div1>
               <h1>Welcome</h1>
               <h3>Hello, Please Register here.</h3>
-              <h3>Already have an account? Login <Link to='/'>Here</Link></h3>
+              <h3>Already have an account? Login <Link to='/Login'>Here</Link></h3>
             </Div1>
         
             <FormGroup controlId='formBasicUserName'>
@@ -73,12 +72,20 @@ export default function Register() {
                   name='username'
                   ref={register({
                     validate: value => value !== 'admin' || 'Nice try!',
-                    required: 'Required'
+                    required: 'Required',
+                    minLength: 6,
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]/i,
+                      message: 'invalid username'
+                    }
                   })}
                   type='username'
                   placeholder='Enter username'
                 />
                 {errors.username && errors.username.message}
+                {errors.password && errors.password.type === 'minLength' && (
+                    <p>This is field required min length of 6</p>
+                )}
               </Div2>
             </FormGroup>
 
