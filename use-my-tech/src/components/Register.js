@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import {FormGroup, FormControl, FormLabel} from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
@@ -34,17 +34,11 @@ export default function Register() {
   
   const history = useHistory();
 
-  const [credentials, setCredentials] = useState({
-    username: '',
-    password: ''
-  });
-
-  function submitHandler(event) {
+  function submitHandler(values) {
     
     axios
-      .post('https://usemytechstuff-bw.herokuapp.com/api/auth/register', credentials)
+      .post('https://usemytechstuff-bw.herokuapp.com/api/auth/register', values)
       .then(res => {
-        setCredentials(res.data.user)
         console.log('this is register res',res)
         history.push('/Login')
       })
