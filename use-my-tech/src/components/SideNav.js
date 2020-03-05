@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { css, jsx } from "@emotion/core";
+import { FaAlignJustify } from "react-icons/fa";
 
 import { actions } from "../actions/constants";
 import colors from "../styles/colors";
@@ -40,7 +41,9 @@ const SideNav = () => {
     >
       <ul>
         <li>
-          <button onClick={toggleMenu}>Your Posts</button>
+          <button onClick={toggleMenu}>
+            <FaAlignJustify />
+          </button>
         </li>
         <li>
           <button onClick={toggleMenu}>Watched Posts</button>
