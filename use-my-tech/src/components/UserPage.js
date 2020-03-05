@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -42,14 +43,5 @@ const UserPage = () => {
       .catch((error) => console.log({ error }));
   }, []);
 
-  return (
-    <div>
-      <SideNav />
-      <SideCard />
-      <SearchBar />
-      <GadgetDisplay />
-    </div>
-  );
-};
 
-export default UserPage;
+
