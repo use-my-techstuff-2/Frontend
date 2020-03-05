@@ -1,14 +1,16 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import {FormGroup, FormControl, FormLabel} from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
-import styled from 'styled-components';
-import axios from 'axios';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { actions } from "../actions/constants";
+import styled from "styled-components";
+import axios from "axios";
 
 const Div = styled.div`
   text-align: center;
   padding: 13% 13% 80% 13%;
-  background: #292C2D;
+  background: #292c2d;
 `;
 
 const Div1 = styled.div`
@@ -22,29 +24,32 @@ const Div2 = styled.div`
 `;
 
 const Section = styled.section`
-  background: #550C18;
-  border: 3px solid #9C9E9E;
+  background: #550c18;
+  border: 3px solid #9c9e9e;
   padding-bottom: 3%;
   width: 80%;
   margin-left: 10%;
 `;
 
 export default function Login() {
-  const { handleSubmit, errors } = useForm();
-  
+  const { register, handleSubmit, errors } = useForm();
+  const dispatch = useDispatch();
   const history = useHistory();
 
   function submitHandler(values) {
-  
-  axios
-    .post('https://usemytechstuff-bw.herokuapp.com/api/auth/login', values)
-    .then(res => {
-      console.log('this is login res',res)
-      history.push('/Login')
-    })
-    .catch(error => {
-      console.log('error', error);
-    })
+    console.log(values);
+    axios
+      .post("https://usemytechstuff-bw.herokuapp.com/api/auth/login", values)
+      .then((res) => {
+        console.log("this is login res");
+        console.log(res.data.token);
+        localStorage.setItem("token", res.data.token);
+        dispatch({ type: actions.SET_USER, payload: res.data.id });
+        history.push("/posts");
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
   }
 
   function render() {
@@ -52,38 +57,41 @@ export default function Login() {
       <Div>
         <Section>
           <form onSubmit={handleSubmit(submitHandler)}>
-
             <Div1>
-            <h1>Welcome</h1>
-            <h3>Hello, Welcome back please log in.</h3>
-            <h3>New user Register <Link to='/'>Here</Link></h3>
+              <h1>Welcome</h1>
+              <h3>Hello, Welcome back please log in.</h3>
+              <h3>
+                New user Register <Link to="/">Here</Link>
+              </h3>
             </Div1>
 
-            <FormGroup controlId='formBasicUsername'>
+            <FormGroup controlId="formBasicUsername">
               <Div2>
                 <FormLabel>Username: </FormLabel>
                 <FormControl
-                  type='text'
-                  name='username'
+                  type="text"
+                  name="username"
                   required
-                  placeholder='Enter username'
+                  placeholder="Enter username"
+                  ref={register}
                 />
                 {errors.username && errors.username.message}
               </Div2>
             </FormGroup>
 
-            <FormGroup controlId='formBasicPassword'>
+            <FormGroup controlId="formBasicPassword">
               <Div2>
                 <FormLabel>Password: </FormLabel>
                 <FormControl
                   name="password"
                   required
-                  placeholder='Enter password'
+                  placeholder="Enter password"
+                  ref={register}
                 />
                 {errors.password && errors.password.message}
-                </Div2>
+              </Div2>
             </FormGroup>
-      
+
             <button type="submit">Login</button>
           </form>
         </Section>
@@ -91,5 +99,4 @@ export default function Login() {
     );
   }
   return render();
-};
-
+}

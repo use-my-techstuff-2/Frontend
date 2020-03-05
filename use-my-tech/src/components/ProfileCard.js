@@ -1,33 +1,80 @@
-import React from "react";
+/**@jsx jsx*/
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
+import { css, jsx } from "@emotion/core";
+import colors from "../styles/colors";
+import { Link } from "@reach/router";
 const dummyUser = {
   name: "Sarah",
   posts: 5,
   posts_with_offers: 1
 };
-
-const user = {
-  name: "Sarah",
-  posts: 5,
-  posts_with_offers: 1
-};
-
+const styledProfile = css`
+  background: ${colors.dark};
+  color: white;
+  display: grid;
+  grid-template-columns: 40% 50%;
+  grid-column-gap: 5%;
+  justify-content: center;
+  align-items: center;
+  height: 27vh;
+  position: relative;
+  div {
+    grid-column: 1/2;
+    grid-row: 1/4;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    img {
+      border-radius: 50px;
+      border: 1px ${colors.light} solid;
+    }
+  }
+  a {
+    color: blue;
+    right: 5%;
+    height: 60%;
+    bottom: -20%;
+    font-size: 3rem;
+    text-decoration: none;
+    position: absolute;
+  }
+`;
 const ProfileCard = () => {
+  let user = useSelector((state) => state.user_id);
+  const [showButton, setShowButton] = useState(true);
+  const toggleButton = () => {
+    setShowButton(!showButton);
+  };
 
-  let user = useSelector((state) => state.user);
   console.log(user);
-
   return (
-    <div>
+    <div
+      css={css`
+        ${styledProfile}
+      `}
+    >
       <div className="img__box">
-        <img src="" alt="User Profile Picter" />
+        <img
+          src={require("../images/profile_img.jpg")}
+          alt={"user profile"}
+          width="100"
+          height="100"
+        />
       </div>
-      <h1 className="user__name">{user.name}</h1>
-      <p className="user_totalPosts">{user.posts}</p>
-
-      <p className="user_offeredPosts">{user.postsWithOffers}</p>
-
+      <h1 className="user__name">Hello</h1>
+      <p className="user_totalPosts">Total Posts:0</p>
+      <p className="user_offeredPosts">Offers:0</p>
+      {showButton ? (
+        <Link onClick={toggleButton} to="new-gadget">
+          +
+        </Link>
+      ) : (
+        <Link onClick={toggleButton} to="/">
+          x
+        </Link>
+      )}
     </div>
   );
 };

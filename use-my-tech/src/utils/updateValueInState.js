@@ -6,7 +6,7 @@
 
 const updateValueInState = (stateKey) => {
   return function(state, action) {
-    console.log(action);
+    console.log(action, stateKey);
     return { ...state, [stateKey]: action.payload };
   };
 };

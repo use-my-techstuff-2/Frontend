@@ -1,4 +1,9 @@
-const login = (user) => {};
+import * as utils from "../../utils";
+
+const login = (user) => {
+  utils.updateValueInState("user");
+};
+
 const loginFailed = () => {};
 const loginSuccess = () => {};
 const submitRegister = () => {};

@@ -2,6 +2,7 @@ export const actions = {
   LOGIN: "login",
   LOGIN_FAILED: "loginFailed",
   LOGIN_SUCCESS: "loginSuccess",
+  SET_USER: "setUser",
   SUBMIT_REGISTER: "submitRegister",
   REGISTER_SUCCESS: "registerSuccess",
   REGISTER_FAILED: "registerFailed",
@@ -10,10 +11,12 @@ export const actions = {
   EDIT_POST: "editPost",
   DELETE_POST: "deletePost",
   VIEW_OWN_POSTS: "viewOwnPosts",
+  SET_ALL_POSTS: "setAllPosts",
   VIEW_ALL_POSTS: "viewAllPosts", //may be removed
   VIEW_POST: "viewPost",
   SEARCH_BY_QUERY: "searchByQuery",
   RENT_POSTED_ITEM: "rentPostedItem",
+  SIDE_NAV_SHOW_TOGGLE: "sideNavShowToggle",
   //stretch actions
   MESSAGE_POST_OWNER: "messagePoseOwner",
   VIEW_ALL_POSTS_BY_USER: "viewAllPostsByUser",
