@@ -4,7 +4,9 @@ import * as utils from "../utils";
 const initialState = {
   loading: false,
   token: "",
-  user: { id: null, name: "Robert", posts: 4, postsWithOffers: 1 },
+  user_id: null,
+  user_posts: null,
+  postsWithOffers: null,
   userPosts: [],
   totalPosts: [],
   loggedIn: false,
@@ -24,7 +26,7 @@ const initialState = {
 
 // // Handlers that are called by the reducer that update state
 const handlers = {};
-handlers[actions.SET_USER] = utils.updateValueInState("token");
+handlers[actions.SET_USER] = utils.updateValueInState("user_id");
 handlers[actions.SEARCH_BY_QUERY] = utils.updateValueInState("query");
 handlers[actions.LOGIN_SUCCEED] = utils.flipBoolValueInState("loggedIn");
 handlers[actions.SIDE_NAV_SHOW_TOGGLE] = utils.flipBoolValueInState(

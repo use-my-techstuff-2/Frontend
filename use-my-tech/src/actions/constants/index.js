@@ -2,6 +2,7 @@ export const actions = {
   LOGIN: "login",
   LOGIN_FAILED: "loginFailed",
   LOGIN_SUCCESS: "loginSuccess",
+  SET_USER: "setUser",
   SUBMIT_REGISTER: "submitRegister",
   REGISTER_SUCCESS: "registerSuccess",
   REGISTER_FAILED: "registerFailed",

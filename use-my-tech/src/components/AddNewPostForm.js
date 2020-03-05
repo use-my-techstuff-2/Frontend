@@ -1,6 +1,7 @@
 /**@jsx jsx*/
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { css, jsx } from "@emotion/core";
 import { navigate } from "@reach/router";
@@ -31,14 +32,16 @@ const styledForm = css`
 
 const AddNewPostForm = () => {
   const { register, error, handleSubmit, reset } = useForm();
+  const user = useSelector((state) => state.user_id);
 
   const onSubmit = (values) => {
     const newItem = {
       location: `${values.city}, ${values.state}`,
       name: values.name,
       price: values.price,
-      owner_id: 1
+      owner_id: user
     };
+    console.log(newItem);
     axiosWithAuth()
       .post("/gadgets/1", newItem)
       .then((res) => {

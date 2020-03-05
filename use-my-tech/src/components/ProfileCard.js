@@ -42,7 +42,7 @@ const styledProfile = css`
   }
 `;
 const ProfileCard = () => {
-  let user = useSelector((state) => state.user);
+  let user = useSelector((state) => state.user_id);
   const [showButton, setShowButton] = useState(true);
   const toggleButton = () => {
     setShowButton(!showButton);
@@ -63,9 +63,9 @@ const ProfileCard = () => {
           height="100"
         />
       </div>
-      <h1 className="user__name">Hello {user.name}</h1>
-      <p className="user_totalPosts">Total Posts {user.posts}</p>
-      <p className="user_offeredPosts">Offers {user.postsWithOffers}</p>
+      <h1 className="user__name">Hello</h1>
+      <p className="user_totalPosts">Total Posts:0</p>
+      <p className="user_offeredPosts">Offers:0</p>
       {showButton ? (
         <Link onClick={toggleButton} to="new-gadget">
           +
