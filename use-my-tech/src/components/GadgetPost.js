@@ -13,7 +13,7 @@ const GadgetPost = ({ gadget }) => {
         border: 1px black solid;
         background: linear-gradient(
             90deg,
-            ${colors.darK} 65%,
+            ${colors.dark} 65%,
             ${colors.light} 65%
           ),
           linear-gradient(${colors.light}, ${colors.secondar});

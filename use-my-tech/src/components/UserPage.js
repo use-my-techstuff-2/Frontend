@@ -7,22 +7,9 @@ import SideNav from "./SideNav";
 import SideCard from "./SideCard";
 import SearchBar from "./SearchBar";
 import GadgetDisplay from "./GadgetDisplay";
+import AddNewPostForm from "./AddNewPostForm";
 
 const UserPage = () => {
-  // useEffect(() => {
-  //   axios
-  //     .put("https://usemytechstuff-bw.herokuapp.com/api/gadgets/1", {
-  //       id: 1,
-  //       name: "Xbox",
-  //       price: 100,
-  //       location: "Cali"
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       localStorage.setItem("token", JSON.stringify(res.data.id));
-  //     })
-  //     .catch((error) => console.log({ error }));
-  // }, []);
   // useEffect(() => {
   //   axios
   //     .get("https://usemytechstuff-bw.herokuapp.com/api/gadgets/2/gadgets")

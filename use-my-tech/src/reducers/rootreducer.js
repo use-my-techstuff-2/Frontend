@@ -5,6 +5,8 @@ const initialState = {
   loading: false,
   token: "",
   user: { id: null, name: "Robert", posts: 4, postsWithOffers: 1 },
+  userPosts: [],
+  totalPosts: [],
   loggedIn: false,
   error: "",
   query: "",
@@ -29,10 +31,12 @@ handlers[actions.SIDE_NAV_SHOW_TOGGLE] = utils.flipBoolValueInState(
   "sideNavShow"
 );
 handlers[actions.LOGIN_FAILED] = utils.updateValueInState("error");
+handlers[actions.SET_ALL_POSTS] = utils.updateValueInState("totalPosts");
 
 const rootReducer = (startState, handlers) => {
   return function(state = startState, action) {
     console.log({ state, action, handlers });
+    console.log(actions.SET_ALL_POSTS, action.type, handlers["SET_ALL_POSTS"]);
     const handler = handlers[action.type];
     if (handler) {
       console.log("found handler", handler);

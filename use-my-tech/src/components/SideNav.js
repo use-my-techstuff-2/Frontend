@@ -4,10 +4,12 @@ import { useDispatch } from "react-redux";
 import { css, jsx } from "@emotion/core";
 
 import { actions } from "../actions/constants";
+import colors from "../styles/colors";
 
 const styledNav = css`
   height: 100%;
-  background: pink;
+  background: ${colors.secondar};
+  z-index: 100;
   ul {
     height: 100%;
     list-style: none;
