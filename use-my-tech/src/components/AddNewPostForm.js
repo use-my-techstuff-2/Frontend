@@ -42,13 +42,14 @@ const AddNewPostForm = () => {
       location: `${values.city}, ${values.state}`,
       name: values.name,
       price: values.price,
-      owner_id: user
+      owner_id: 1
     };
-
+    console.log(newItem);
     axiosWithAuth()
-      .post("/gadgets/1", newItem)
+      .post(`/gadgets/${user}`, newItem)
       .then((res) => {
         dispatch({ type: actions.SET_USER_POSTS, payload: res.data });
+        dispatch({ type: actions.TOGGLE_BUTTON });
         navigate("/posts");
       })
       .catch((err) => {

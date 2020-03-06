@@ -41,6 +41,8 @@ const styledPosts = css`
 const UserPostCard = () => {
   const user = useSelector((state) => state.user_id);
   const userPosts = useSelector((state) => state.userPosts);
+  const allPosts = useSelector((state) => state.totalPosts);
+
   const dispatch = useDispatch();
   useEffect(() => {
     axiosWithAuth()
@@ -50,7 +52,8 @@ const UserPostCard = () => {
         dispatch({ type: actions.SET_USER_POSTS, payload: res.data });
       })
       .catch((err) => console.log(err));
-  }, [dispatch, user]);
+  }, [dispatch]);
+
   return (
     <div
       css={css`

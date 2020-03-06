@@ -15,7 +15,7 @@ const initialState = {
   query: "",
   editing: false,
   sideNavShow: false,
-  rerender: 0
+  toggleButton: false
 };
 
 // const rootReducer = (state = { initialState }, action) => {
@@ -38,6 +38,7 @@ handlers[actions.LOGIN_FAILED] = utils.updateValueInState("error");
 handlers[actions.SET_ALL_POSTS] = utils.updateValueInState("totalPosts");
 handlers[actions.SET_USER_POSTS] = utils.updateValueAndLoading("userPosts");
 handlers[actions.LOADING] = utils.flipBoolValueInState("loading");
+handlers[actions.TOGGLE_BUTTON] = utils.flipBoolValueInState("toggleButton");
 
 const rootReducer = (startState, handlers) => {
   return function(state = startState, action) {

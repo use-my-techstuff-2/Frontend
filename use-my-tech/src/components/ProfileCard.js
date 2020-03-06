@@ -1,15 +1,12 @@
 /**@jsx jsx*/
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { css, jsx } from "@emotion/core";
 import colors from "../styles/colors";
 import { Link } from "@reach/router";
-const dummyUser = {
-  name: "Sarah",
-  posts: 5,
-  posts_with_offers: 1
-};
+import { actions } from "../actions/constants/index";
+
 const styledProfile = css`
   background: ${colors.dark};
   color: white;
@@ -42,13 +39,15 @@ const styledProfile = css`
   }
 `;
 const ProfileCard = () => {
+  const dispatch = useDispatch();
   let user = useSelector((state) => state.user_id);
-  const [showButton, setShowButton] = useState(true);
+  const userPosts = useSelector((state) => state.userPosts);
+  const showButton = useSelector((state) => state.toggleButton);
+
   const toggleButton = () => {
-    setShowButton(!showButton);
+    dispatch({ type: actions.TOGGLE_BUTTON });
   };
 
-  console.log(user);
   return (
     <div
       css={css`
