@@ -3,63 +3,15 @@
 import React, { useState, useEffect } from "react";
 import { css, jsx } from "@emotion/core";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import colors from "../styles/colors";
+import UserPost from "./UserPost";
+import { actions } from "../actions/constants";
 
-const gadgets = [
-  {
-    id: 10,
-    owner_id: 1,
-    name: "Laptop",
-    price: 75,
-
-    location: "Atlanta"
-  },
-  {
-    id: 11,
-    owner_id: 1,
-    name: "TV",
-    price: 75,
-
-    location: "Atlanta"
-  },
-  {
-    id: 12,
-    owner_id: 1,
-    name: "X-box",
-    price: 75,
-
-    location: "VA"
-  },
-  {
-    id: 13,
-    owner_id: 1,
-    name: "Laptop",
-    price: 75,
-
-    location: "CO"
-  },
-  {
-    id: 13,
-    owner_id: 1,
-    name: "Laptop",
-    price: 75,
-
-    location: "CO"
-  },
-  {
-    id: 13,
-    owner_id: 1,
-    name: "Laptop",
-    price: 75,
-
-    location: "CO"
-  }
-];
 const styledPosts = css`
   background: linear-gradient(90deg, ${colors.primary} 80%, ${colors.dark} 80%);
   height: 73vh;
-  /* overflow: hidden; */
+  overflow: scroll;
   text-align: center;
   color: ${colors.primary};
   display: flex;
@@ -69,36 +21,36 @@ const styledPosts = css`
     margin-bottom: 1%;
     height: 10%;
   }
-  h4{
-    background-color:${colors.dark};
-    height:70vh;
-    font-size:1.5rem;
-    
+  h4 {
+    background-color: ${colors.dark};
+    height: 70vh;
+    font-size: 1.5rem;
   }
   div {
-    /* background-color: ${colors.light}; */
-    /* border: 1px pink solid; */
-
     margin-bottom: 2%;
-    h3{
-      background-color:${colors.dark};
+    h3 {
+      background-color: ${colors.dark};
     }
     div {
       background-color: red;
       height: 100%;
-      transform: scaleY(0);
+      /* transform: scaleY(0); */
     }
   }
 `;
 const UserPostCard = () => {
-  const posts = useSelector((state) => state.userPosts);
-  console.log(posts.length);
+  const user = useSelector((state) => state.user_id);
+  const userPosts = useSelector((state) => state.userPosts);
+  const dispatch = useDispatch();
   useEffect(() => {
     axiosWithAuth()
-      .get("gadgets/1/gadgets")
-      .then((res) => console.log(res))
+      .get(`gadgets/1/gadgets`)
+      .then((res) => {
+        // setPosts(res.data);
+        dispatch({ type: actions.SET_USER_POSTS, payload: res.data });
+      })
       .catch((err) => console.log(err));
-  });
+  }, [dispatch, user]);
   return (
     <div
       css={css`
@@ -106,16 +58,8 @@ const UserPostCard = () => {
       `}
     >
       <h2>Posts</h2>
-      {posts.length ? (
-        posts.map((gadget) => (
-          <div key={gadget.id} className="yourPost">
-            <h3 className="yourPost__title">{gadget.name}</h3>
-            <div className="post__info">
-              <p className="yourPost__price">{gadget.price}</p>
-              <p className="yourPost__location">{gadget.location}</p>
-            </div>
-          </div>
-        ))
+      {userPosts.length ? (
+        userPosts.map((gadget) => <UserPost key={gadget.id} gadget={gadget} />)
       ) : (
         <h4>No Current Posts</h4>
       )}

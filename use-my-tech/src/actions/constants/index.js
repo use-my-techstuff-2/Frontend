@@ -10,13 +10,15 @@ export const actions = {
   POST_NEW_ITEM: "postNewItem",
   EDIT_POST: "editPost",
   DELETE_POST: "deletePost",
-  VIEW_OWN_POSTS: "viewOwnPosts",
+  SET_USER_POSTS: "setUserPosts",
   SET_ALL_POSTS: "setAllPosts",
   VIEW_ALL_POSTS: "viewAllPosts", //may be removed
   VIEW_POST: "viewPost",
   SEARCH_BY_QUERY: "searchByQuery",
   RENT_POSTED_ITEM: "rentPostedItem",
   SIDE_NAV_SHOW_TOGGLE: "sideNavShowToggle",
+  LOADING: "loading",
+  SET_ERROR: "setError",
   //stretch actions
   MESSAGE_POST_OWNER: "messagePoseOwner",
   VIEW_ALL_POSTS_BY_USER: "viewAllPostsByUser",

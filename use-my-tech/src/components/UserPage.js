@@ -11,29 +11,29 @@ import GadgetDisplay from "./GadgetDisplay";
 import AddNewPostForm from "./AddNewPostForm";
 
 const UserPage = () => {
-  // useEffect(() => {
-  //   axios
-  //     .get("https://usemytechstuff-bw.herokuapp.com/api/gadgets/2/gadgets")
-  //     .then((res) => {
-  //       console.log(res, "Login");
-  //     })
-  //     .catch((error) => console.log({ error }));
-  // }, []);
-  // useEffect(() => {
-  //   axios
-  //     .get("https://usemytechstuff-bw.herokuapp.com/api/gadgets")
-  //     .then((res) => {
-  //       console.log(res, "Login");
-  //     })
-  //     .catch((error) => console.log({ error }));
-  // }, []);
+  //   useEffect(() => {
+  //     axios
+  //       .get("https://usemytechstuff-bw.herokuapp.com/api/gadgets/2/gadgets")
+  //       .then((res) => {
+  //         console.log(res, "Login");
+  //       })
+  //       .catch((error) => console.log({ error }));
+  //   }, []);
+  //   useEffect(() => {
+  //     axios
+  //       .get("https://usemytechstuff-bw.herokuapp.com/api/gadgets")
+  //       .then((res) => {
+  //         console.log(res, "Login");
+  //       })
+  //       .catch((error) => console.log({ error }));
+  //   }, []);
 
   return (
     <div
       css={css`
         height: 100vh;
         display: grid;
-        grid-template-columns: 10% 85%;
+        grid-template-columns: 10% 80%;
         grid-template-areas:
           "side search"
           "side posts"

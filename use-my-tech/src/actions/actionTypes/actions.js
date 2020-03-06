@@ -1,6 +1,6 @@
 import * as utils from "../../utils";
 
-const login = (user) => {
+export const login = (user) => {
   utils.updateValueInState("user");
 };
 
@@ -13,7 +13,9 @@ const profileUpdate = () => {};
 const editPost = () => {};
 const deletePost = () => {};
 const viewOwnPosts = (state, action) => {};
-const viewAllPosts = () => {};
+export const setAllPosts = (posts) => {
+  console.log(posts);
+};
 const viewPost = () => {};
 const rentPostedItem = () => {};
 const messagePoseOwner = () => {};

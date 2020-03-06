@@ -1,5 +1,6 @@
 import { actions } from "../actions/constants/";
 import * as utils from "../utils";
+import { setAllPosts } from "../actions/actionTypes/actions";
 
 const initialState = {
   loading: false,
@@ -13,7 +14,8 @@ const initialState = {
   error: "",
   query: "",
   editing: false,
-  sideNavShow: false
+  sideNavShow: false,
+  rerender: 0
 };
 
 // const rootReducer = (state = { initialState }, action) => {
@@ -34,6 +36,8 @@ handlers[actions.SIDE_NAV_SHOW_TOGGLE] = utils.flipBoolValueInState(
 );
 handlers[actions.LOGIN_FAILED] = utils.updateValueInState("error");
 handlers[actions.SET_ALL_POSTS] = utils.updateValueInState("totalPosts");
+handlers[actions.SET_USER_POSTS] = utils.updateValueAndLoading("userPosts");
+handlers[actions.LOADING] = utils.flipBoolValueInState("loading");
 
 const rootReducer = (startState, handlers) => {
   return function(state = startState, action) {

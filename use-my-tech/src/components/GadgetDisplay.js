@@ -6,55 +6,19 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../actions/constants";
 
-const gadgets = [
-  {
-    id: 10,
-    owner_id: 1,
-    name: "Laptop",
-    price: 75,
-
-    location: "Atlanta"
-  },
-  {
-    id: 11,
-    owner_id: 1,
-    name: "TV",
-    price: 75,
-
-    location: "Atlanta"
-  },
-  {
-    id: 12,
-    owner_id: 1,
-    name: "X-box",
-    price: 75,
-
-    location: "VA"
-  },
-  {
-    id: 13,
-    owner_id: 1,
-    name: "Laptop",
-    price: 75,
-
-    location: "CO"
-  }
-];
-
 const GadgetDisplay = () => {
   const posts = useSelector((state) => state.totalPosts);
+  const userPosts = useSelector((state) => state.userPosts);
   const dispatch = useDispatch();
-  console.log(posts);
 
   useEffect(() => {
     axiosWithAuth()
       .get("/gadgets")
       .then((res) => {
-        console.log("got the data");
         dispatch({ type: actions.SET_ALL_POSTS, payload: res.data });
       })
       .catch((err) => console.log(err));
-  }, [dispatch]);
+  }, [dispatch, userPosts]);
   return (
     <div
       css={{
@@ -66,7 +30,7 @@ const GadgetDisplay = () => {
       }}
     >
       {posts.length ? (
-        posts.map((gadget) => <GadgetPost gadget={gadget} />)
+        posts.map((gadget) => <GadgetPost key={gadget.id} gadget={gadget} />)
       ) : (
         <p>No Items to Display</p>
       )}

@@ -1,11 +1,12 @@
 /**@jsx jsx*/
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { css, jsx } from "@emotion/core";
 import { navigate } from "@reach/router";
 import colors from "../styles/colors";
+import { actions } from "../actions/constants";
 
 const styledForm = css`
   background-color: ${colors.light};
@@ -33,22 +34,28 @@ const styledForm = css`
 const AddNewPostForm = () => {
   const { register, error, handleSubmit, reset } = useForm();
   const user = useSelector((state) => state.user_id);
+  const dispatch = useDispatch();
 
   const onSubmit = (values) => {
+    dispatch({ type: actions.LOADING });
     const newItem = {
       location: `${values.city}, ${values.state}`,
       name: values.name,
       price: values.price,
       owner_id: user
     };
-    console.log(newItem);
+
     axiosWithAuth()
       .post("/gadgets/1", newItem)
       .then((res) => {
-        console.log(res);
-        navigate("/");
+        dispatch({ type: actions.SET_USER_POSTS, payload: res.data });
+        navigate("/posts");
       })
-      .catch((err) => error);
+      .catch((err) => {
+        dispatch({ type: actions.SET_ERROR, payload: err.message });
+        navigate("/posts");
+      });
+
     reset();
   };
 

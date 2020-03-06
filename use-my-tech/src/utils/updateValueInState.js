@@ -12,6 +12,6 @@ const updateValueInState = (stateKey) => {
 };
 
 export default updateValueInState;
-const updateTest = updateValueInState("name");
+// const updateTest = updateValueInState("name");
 
-console.log(updateTest({ name: "Robert", age: 30 }, { payload: "Sarah" }));
+// console.log(updateTest({ name: "Robert", age: 30 }, { payload: "Sarah" }));

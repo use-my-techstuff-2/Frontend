@@ -71,7 +71,7 @@ const ProfileCard = () => {
           +
         </Link>
       ) : (
-        <Link onClick={toggleButton} to="/">
+        <Link onClick={toggleButton} to="/posts">
           x
         </Link>
       )}

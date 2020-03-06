@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actions } from "../actions/constants";
+import { navigate } from "@reach/router";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -37,12 +38,9 @@ export default function Login() {
   const history = useHistory();
 
   function submitHandler(values) {
-    console.log(values);
     axios
       .post("https://usemytechstuff-bw.herokuapp.com/api/auth/login", values)
       .then((res) => {
-        console.log("this is login res");
-        console.log(res.data.token);
         localStorage.setItem("token", res.data.token);
         dispatch({ type: actions.SET_USER, payload: res.data.id });
         history.push("/posts");
