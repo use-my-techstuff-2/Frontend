@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { css, jsx } from "@emotion/core";
 import { FaAlignJustify, FaRegWindowClose } from "react-icons/fa";
+import SearchBar from "./SearchBar";
 
 import { actions } from "../actions/constants";
 import colors from "../styles/colors";
 
 const styledNav = css`
-  height: 10%;
+  height: 100%;
   border-radius: 20px;
-  width: 50%;
+  width: 20%;
   /* background: ${colors.secondar}; */
   z-index: 100;
   button {
@@ -33,31 +34,46 @@ const SideNav = () => {
   const toggleMenu = () => {
     dispatch({ type: actions.SIDE_NAV_SHOW_TOGGLE });
   };
-
+  const navbar = css`
+    width: 100%;
+    background: ${colors.light};
+    display: flex;
+    .signOut {
+      height: 100%;
+      background: transparent;
+      color: ${colors.primary};
+      font-size: 1.3rem;
+      border: none;
+    }
+  `;
   return (
-    <div
-      className="sideNav"
-      css={css`
-        ${styledNav}
-      `}
-    >
-      <button
-        onClick={toggleMenu}
+    <div className="full__nav" css={navbar}>
+      <div
+        className="sideNav"
         css={css`
-          background: ${showMenu ? "transparent" : "pink"};
+          ${styledNav}
         `}
       >
-        {showMenu ? (
-          <FaRegWindowClose />
-        ) : (
-          <FaAlignJustify
-            css={css`
-              transition: all 0.3s;
-              opacity: ${showMenu ? "0" : "1"};
-            `}
-          />
-        )}
-      </button>
+        <button
+          onClick={toggleMenu}
+          css={css`
+            background: ${showMenu ? "transparent" : `${colors.secondar}`};
+          `}
+        >
+          {showMenu ? (
+            <FaRegWindowClose />
+          ) : (
+            <FaAlignJustify
+              css={css`
+                transition: all 0.3s;
+                opacity: ${showMenu ? "0" : "1"};
+              `}
+            />
+          )}
+        </button>
+      </div>
+      <SearchBar />
+      <button className="signOut">Sign Out</button>
     </div>
   );
 };

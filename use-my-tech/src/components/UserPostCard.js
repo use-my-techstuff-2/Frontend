@@ -9,7 +9,7 @@ import UserPost from "./UserPost";
 import { actions } from "../actions/constants";
 
 const styledPosts = css`
-  background: linear-gradient(90deg, ${colors.primary} 80%, ${colors.dark} 80%);
+  background: linear-gradient(135deg, ${colors.light} 60%, ${colors.dark} 60%);
   height: 73vh;
   overflow: scroll;
   text-align: center;
@@ -28,20 +28,31 @@ const styledPosts = css`
   }
   div {
     margin-bottom: 2%;
+    position: relative;
+    height: 20%;
+    font-weight: 800;
     h3 {
       background-color: ${colors.dark};
+      font-size: 1.6rem;
+    }
+    p {
+      font-size: 1.2rem;
+      text-align: left;
+      padding: 2% 0 0 10%;
     }
     div {
-      background-color: red;
       height: 100%;
-      /* transform: scaleY(0); */
+    }
+    button {
+      background-color: transparent;
+      color: white;
+      border: none;
+      font-size: 2rem;
     }
   }
 `;
 const UserPostCard = () => {
-  const user = useSelector((state) => state.user_id);
   const userPosts = useSelector((state) => state.userPosts);
-  const allPosts = useSelector((state) => state.totalPosts);
 
   const dispatch = useDispatch();
   useEffect(() => {

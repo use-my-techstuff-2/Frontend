@@ -1,7 +1,7 @@
 /**@jsx jsx*/
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { FaRegWindowClose, FaPlusCircle } from "react-icons/fa";
 import { css, jsx } from "@emotion/core";
 import colors from "../styles/colors";
 import { Link } from "@reach/router";
@@ -29,7 +29,7 @@ const styledProfile = css`
     }
   }
   a {
-    color: blue;
+    color: ${colors.secondar};
     right: 5%;
     height: 60%;
     bottom: -20%;
@@ -63,15 +63,15 @@ const ProfileCard = () => {
         />
       </div>
       <h1 className="user__name">Hello</h1>
-      <p className="user_totalPosts">Total Posts:0</p>
-      <p className="user_offeredPosts">Offers:0</p>
+      <p className="user_totalPosts">Total Posts: {userPosts.length}</p>
+      <p className="user_offeredPosts">Offers:</p>
       {showButton ? (
         <Link onClick={toggleButton} to="new-gadget">
-          +
+          <FaPlusCircle />
         </Link>
       ) : (
         <Link onClick={toggleButton} to="/posts">
-          x
+          <FaRegWindowClose />
         </Link>
       )}
     </div>

@@ -15,7 +15,7 @@ const initialState = {
   query: "",
   editing: false,
   sideNavShow: false,
-  toggleButton: false
+  toggleButton: true
 };
 
 // const rootReducer = (state = { initialState }, action) => {

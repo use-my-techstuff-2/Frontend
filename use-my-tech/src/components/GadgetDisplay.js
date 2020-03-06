@@ -40,6 +40,7 @@ const GadgetDisplay = () => {
 
   return (
     <div
+      className="gadgetDisplay"
       css={{
         display: "grid",
         gridTemplateColumns: "30% 30% 30%",

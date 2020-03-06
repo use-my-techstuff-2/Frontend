@@ -1,8 +1,11 @@
+/**@jsx jsx */
 import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { navigate } from "@reach/router";
 import { actions } from "../actions/constants";
 import { useSelector, useDispatch } from "react-redux";
+import { FaTrash, FaEdit } from "react-icons/fa";
+import { css, jsx } from "@emotion/core";
 
 const UserPost = ({ gadget }) => {
   const dispatch = useDispatch();
@@ -28,10 +31,29 @@ const UserPost = ({ gadget }) => {
     <div className="yourPost">
       <h3 className="yourPost__title">{gadget.name}</h3>
       <div className="post__info">
-        <p className="yourPost__price">{gadget.price}</p>
+        <p className="yourPost__price">$ {gadget.price}</p>
+        <p className="yourPost__location">Location:</p>
         <p className="yourPost__location">{gadget.location}</p>
-        <button onClick={() => deleteItem(gadget.id)}>Delete</button>
-        <button onClick={() => editItem(gadget.id)}>Edit</button>
+        <button
+          css={css`
+            position: absolute;
+            right: 4%;
+            bottom: 8%;
+          `}
+          onClick={() => deleteItem(gadget.id)}
+        >
+          <FaTrash />
+        </button>
+        <button
+          css={css`
+            position: absolute;
+            right: 4%;
+            top: 8%;
+          `}
+          onClick={() => editItem(gadget.id)}
+        >
+          <FaEdit />
+        </button>
       </div>
     </div>
   );

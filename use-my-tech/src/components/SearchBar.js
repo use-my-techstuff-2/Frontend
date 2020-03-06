@@ -10,30 +10,39 @@ import colors from "../styles/colors";
 
 const searchStyles = css`
   display: flex;
-  width: 100%;
-  height: 20vh;
+  width: 70%;
+  /* height: 20vh; */
   justify-content: center;
   align-items: center;
   form {
-    margin-top: 5%;
-    height: 10%;
-    width: 40%;
+    margin: 0 5% 0;
+
+    width: 100%;
     display: grid;
   }
   input {
     height: 5vh;
     border: none;
-    border-bottom: 3px ${colors.secondar} solid;
-    display: block;
-    margin-bottom: 10%;
-    width: 100%;
+    background-border-bottom: 3px ${colors.secondar} solid;
+    margin-right: 5%;
+    width: 50%;
   }
   button {
-    padding: 2% 5%;
-    font-size: 1.5rem;
+    color: white;
+    padding: 0.5% 3%;
+    font-size: 1.2rem;
+    background: linear-gradient(
+      145deg,
+      ${colors.secondar} 15%,
+      ${colors.light} 15%
+    );
     border: 1px ${colors.secondar} solid;
     border-radius: 5px;
     margin: 0 auto;
+    &:hover {
+      background: ${colors.light};
+      box-shadow: 0 0 4px ${colors.primary};
+    }
   }
 `;
 
