@@ -1,7 +1,6 @@
 /**@jsx jsx*/
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDropdown } from "../hooks/useDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../actions/constants";
 
@@ -50,7 +49,7 @@ const SearchBar = () => {
 
   const onSubmit = ({ search }) => {
     console.log({ search });
-    dispatch({ type: actions.SEARCH_BY_QUERY, payload: search });
+    dispatch({ type: actions.SEARCH_BY_QUERY, payload: search.toLowerCase() });
   };
 
   return (

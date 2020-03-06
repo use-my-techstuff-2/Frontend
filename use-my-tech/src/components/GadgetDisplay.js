@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GadgetPost from "./GadgetPost";
 import { css, jsx } from "@emotion/core";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
@@ -9,7 +9,9 @@ import { actions } from "../actions/constants";
 const GadgetDisplay = () => {
   const posts = useSelector((state) => state.totalPosts);
   const userPosts = useSelector((state) => state.userPosts);
+  const query = useSelector((state) => state.query);
   const dispatch = useDispatch();
+  const [gadgets, setGadgets] = useState([]);
 
   useEffect(() => {
     axiosWithAuth()
@@ -19,6 +21,23 @@ const GadgetDisplay = () => {
       })
       .catch((err) => console.log(err));
   }, [dispatch, userPosts]);
+
+  useEffect(() => {
+    console.log("Searching", query);
+    if (query) {
+      const queriedPosts = posts.filter((post) => {
+        if (post.name.toLowerCase().includes(query)) {
+          return post;
+        }
+      });
+      if (queriedPosts.length > 0) {
+        setGadgets(queriedPosts);
+      }
+    } else {
+      setGadgets(posts);
+    }
+  }, [posts, query]);
+
   return (
     <div
       css={{
@@ -29,8 +48,8 @@ const GadgetDisplay = () => {
         width: "100%"
       }}
     >
-      {posts.length ? (
-        posts.map((gadget) => <GadgetPost key={gadget.id} gadget={gadget} />)
+      {gadgets.length ? (
+        gadgets.map((gadget) => <GadgetPost key={gadget.id} gadget={gadget} />)
       ) : (
         <p>No Items to Display</p>
       )}
